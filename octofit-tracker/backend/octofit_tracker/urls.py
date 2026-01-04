@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework import permissions
+import os
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from . import views
 
 router = DefaultRouter()
@@ -26,8 +29,27 @@ router.register(r'activities', views.ActivityViewSet)
 router.register(r'workouts', views.WorkoutViewSet)
 router.register(r'leaderboard', views.LeaderboardViewSet)
 
+@api_view(['GET'])
+def api_root_codespace(request, format=None):
+    """
+    Return API endpoints using $CODESPACE_NAME when available to avoid relying on request scheme/host.
+    """
+    cs_name = os.environ.get('CODESPACE_NAME')
+    if cs_name:
+        base = f"https://{cs_name}-8000.app.github.dev"
+    else:
+        scheme = 'https' if request.is_secure() else 'http'
+        base = f"{scheme}://{request.get_host()}"
+    return Response({
+        'teams': f"{base}/api/teams/",
+        'users': f"{base}/api/users/",
+        'activities': f"{base}/api/activities/",
+        'workouts': f"{base}/api/workouts/",
+        'leaderboard': f"{base}/api/leaderboard/",
+    })
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.api_root, name='api-root'),
+    path('', api_root_codespace, name='api-root'),
     path('api/', include(router.urls)),
 ]
