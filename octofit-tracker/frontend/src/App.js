@@ -12,7 +12,10 @@ function App() {
     <div className="App">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
-          <Link className="navbar-brand" to="/">OctoFit</Link>
+          <Link className="navbar-brand d-flex align-items-center" to="/">
+            <img src="/octofitapp-small.png" alt="OctoFit" style={{height:32, marginRight:10}} />
+            <span className="fw-bold">OctoFit</span>
+          </Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
           </button>

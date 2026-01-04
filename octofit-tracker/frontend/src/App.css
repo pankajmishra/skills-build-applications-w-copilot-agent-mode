@@ -1,41 +1,83 @@
-.App {
-  text-align: center;
+:root{
+  --bg:#071428; /* deep navy */
+  --card:#0f2a44; /* card background */
+  --muted:#9fb0c9; /* muted text */
+  --accent:#3ec5ff; /* bright accent */
+  --accent-2:#7cf0a8; /* secondary accent */
+  --table-header:#08304a; /* table header */
+  --btn:#1aa3ff; /* primary button */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  background: linear-gradient(180deg, var(--bg) 0%, #0b2540 100%);
+  color: var(--muted);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App{
+  text-align:left;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.navbar{
+  background: linear-gradient(90deg, rgba(10,25,45,0.95), rgba(6,20,34,0.95));
 }
 
-.App-link {
-  color: #61dafb;
+.navbar-brand img{ 
+  border-radius:6px;
+  box-shadow:0 1px 4px rgba(0,0,0,0.6);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar .nav-link{
+  color: var(--muted) !important;
 }
+
+.navbar .nav-link:hover{
+  color: var(--accent) !important;
+}
+
+.card.data-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  color: #eaf6ff;
+}
+
+.card-title{
+  color: var(--accent-2);
+}
+
+h1,h2,h3,h4{
+  color: #dff8ff;
+}
+
+.table{
+  background: rgba(255,255,255,0.02);
+  color:#eaf6ff;
+}
+
+.table thead th{
+  background: var(--table-header);
+  color: #cfefff;
+}
+
+.table-striped tbody tr:nth-of-type(odd){
+  background: rgba(255,255,255,0.015);
+}
+
+.btn-primary{
+  background: var(--btn);
+  border-color: rgba(255,255,255,0.08);
+  color: #002233;
+}
+
+.btn-outline-secondary{
+  color: var(--accent);
+  border-color: rgba(255,255,255,0.06);
+}
+
+a{
+  color: var(--accent);
+}
+
+a:hover{ color: #9ef; }
 
 /* OctoFit UI tweaks */
 .data-card {
