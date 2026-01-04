@@ -7,9 +7,7 @@ const Leaderboard = () => {
   const [showModal, setShowModal] = useState(false);
 
   const codespaceName = process.env.REACT_APP_CODESPACE_NAME;
-  -8000.app.github.dev/api/leaderboard/
-  const baseUrl = codespaceName ? `https://${codespaceName}-8000.app.github.dev` : 'http://localhost:8000';
-  const endpoint = `${baseUrl}/api/leaderboard/`;
+  const endpoint = codespaceName ? `https://${codespaceName}-8000.app.github.dev/api/leaderboard/` : 'http://localhost:8000/api/leaderboard/';
 
   const fetchData = () => {
     setLoading(true);
